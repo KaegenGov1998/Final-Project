@@ -40,6 +40,7 @@ const SignUp = () => {
   }
 
   return (
+    <>
     <div>
       <form onSubmit={handleSubmit}>
 
@@ -62,7 +63,8 @@ const SignUp = () => {
 
       </form>
       <p>Already a Member? <Link to='/'>Login</Link></p>
-    </div>
+      </div>
+    </>
   )
 }
 
