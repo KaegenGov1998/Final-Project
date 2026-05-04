@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { supabase } from '../client';
 
 const SignUp = () => {
@@ -21,8 +21,8 @@ const SignUp = () => {
     })
   }
 
- async function handleSubmit(e) {
-  e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault()
     try {
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
@@ -41,28 +41,30 @@ const SignUp = () => {
 
   return (
     <>
-    <div>
-      <form onSubmit={handleSubmit}>
+      <div className='w-screen h-screen flex justify-center items-center bg-gray-100'>
+        <div className='flex flex-col justify-center items-center border-2 bg-white border-gray-300 rounded-md p-12 gap-4'>
+          <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-4'>
 
-        <input
-          placeholder='Fullname'
-          name='fullname'
-          onChange={handleChange} />
+            <input
+              placeholder='Fullname'
+              name='fullname'
+              onChange={handleChange} />
 
-        <input
-          placeholder='Email'
-          name='email'
-          onChange={handleChange} />
+            <input
+              placeholder='Email'
+              name='email'
+              onChange={handleChange} />
 
-        <input
-          placeholder='Password'
-          name='password'
-          onChange={handleChange} />
+            <input
+              placeholder='Password'
+              name='password'
+              onChange={handleChange} />
 
-        <button type='submit'>Submit</button>
+            <button type='submit'>Submit</button>
 
-      </form>
-      <p>Already a Member? <Link to='/'>Login</Link></p>
+          </form>
+          <p>Already a Member? <Link to='/'>Login</Link></p>
+        </div>
       </div>
     </>
   )

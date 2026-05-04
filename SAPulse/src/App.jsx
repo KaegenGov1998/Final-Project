@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { SignUp, Login, Homepage } from './pages';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import './index.css';
 
 const App = () => {
 
