@@ -1,19 +1,25 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import Sidebar from '../components/Sidebar';
 
-const homepage = ({token}) => {
-  let navigate =useNavigate()
+const homepage = ({ token }) => {
+  let navigate = useNavigate()
 
-  function handleLogout(){
+  function handleLogout() {
     sessionStorage.removeItem('token')
     navigate("/")
-    
+
   }
   return (
-    <div>
-      <h1>Welcome back {token.user.user_metadata.full_name}</h1>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <>
+      <div className='flex flex-row'>
+        <Sidebar />
+        <div className='flex flex-col'>
+          <h1>Welcome back {token.user.user_metadata.full_name}</h1>
+          <button onClick={handleLogout} className='cursor-pointer'>Logout</button>
+        </div>
+      </div>
+    </>
   )
 }
 
