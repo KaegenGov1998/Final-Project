@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { SignUp, Login, Homepage } from './pages';
+import { SignUp, Login, Homepage, Admin } from './pages';
 import { Routes, Route } from 'react-router-dom';
 import './index.css';
 
@@ -24,6 +24,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={<Login setToken={setToken}/>} />
         <Route path={'/signup'} element={<SignUp />} />
+        <Route path={'/admin'} element={<Admin token={token} />} />
         {token?<Route path={'/homepage'} element={<Homepage token={token}/>} />:""}
       </Routes>
     </div>

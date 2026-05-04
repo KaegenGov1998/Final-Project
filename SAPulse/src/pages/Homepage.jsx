@@ -12,7 +12,7 @@ const homepage = ({ token }) => {
   }
   return (
     <>
-      <div className='flex flex-row'>
+      <div className='flex flex-row bg-gray-50'>
         <Sidebar />
         <div className='flex flex-col'>
           <h1>Welcome back {token.user.user_metadata.full_name}</h1>
