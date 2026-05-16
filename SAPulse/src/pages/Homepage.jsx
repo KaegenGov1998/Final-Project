@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { supabase } from '../client'
 import Sidebar from '../components/Sidebar';
 
-const Posts = () => {
-  const [posts, setPosts] = useState([])
+const Homepage = () => {
+  const [posts, setPosts] = useState([]);
  
   useEffect(() => {
     async function fetchPosts() {
@@ -22,6 +22,7 @@ const Posts = () => {
  
       setPosts(postsData)
     }
+
  
     fetchPosts()
   }, [])
@@ -30,21 +31,19 @@ const Posts = () => {
     <div className="flex flex-row bg-gray-50 min-h-screen">
       <Sidebar />
 
-      <div className="flex flex-col flex-1 px-8 py-8 overflow-y-auto">
-        <div>
+      <div className="flex flex-row flex-wrap px-8 py-8 overflow-y-auto">
           {posts.map((post) => (
-            <div key={post.id}>
+            <div key={post.id} className='w-50 h-60 p-4 m-4 border-2 border-gray-200 rounded-md overflow-auto'>
               <h3>{post.title}</h3>
               <p>{post.content}</p>
               <p>{post.name_post}</p>
               <p>{post.area}</p>
-              <p>{post.created_at}</p>
             </div>
           ))}
-        </div>
+
       </div>
     </div>
   )
 }
 
-export default Posts
+export default Homepage
