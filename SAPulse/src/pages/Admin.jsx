@@ -59,9 +59,6 @@ const Admin = ({ token }) => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <button className="bg-blue-950 rounded-md p-2 text-white cursor-pointer">
-              + Add Member
-            </button>
           </div>
 
           <div className="bg-white border-2 border-gray-100 p-2 rounded-md w-full">
@@ -85,7 +82,7 @@ const Admin = ({ token }) => {
                         onClick={() => updateUser(user.email, 'is_leader', !user.is_leader)}
                         className={`px-3 py-1 rounded-full text-sm font-medium ${
                           user.is_leader
-                            ? 'bg-green-100 text-green-700'
+                            ? 'bg-blue-100 text-blue-700'
                             : 'bg-gray-100 text-gray-500'
                         }`}
                       >
@@ -95,7 +92,6 @@ const Admin = ({ token }) => {
 
                     <td>
                       <button
-                        onClick={() => updateUser(user.email, 'is_admin', !user.is_admin)}
                         className={`px-3 py-1 rounded-full text-sm font-medium ${
                           user.is_admin
                             ? 'bg-blue-100 text-blue-700'
