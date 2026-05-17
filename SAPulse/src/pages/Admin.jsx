@@ -39,7 +39,7 @@ const Admin = ({ token }) => {
 
   return (
     <div className="flex flex-row bg-gray-50 h-screen">
-      <Sidebar />
+      <div className="sticky top-0 h-screen"><Sidebar/></div>
       <div className="flex flex-col w-full gap-4 pr-4 pt-8 justify-around">
         <div>
           <h1 className="text-4xl font-bold">
@@ -51,7 +51,7 @@ const Admin = ({ token }) => {
 
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row w-120 bg-white border-2 border-gray-100 rounded-md p-2 my-2">
-              <Search className="pr-2 mr-2 border-r-2 border-gray-500" />
+              <Search className="pr-2 mr-2 border-r-2 border-gray-400" />
               <input
                 placeholder="search names..."
                 value={search}
@@ -74,10 +74,11 @@ const Admin = ({ token }) => {
               <tbody>
                 {filtered.map((user) => (
                   <tr key={user.email}>
-                    <td className="font-medium">{user.full_name}</td>
-                    <td className="font-light">{user.email}</td>
+                    <td className="font-medium"><div className='flex justify-center'>{user.full_name}</div></td>
+                    <td className="font-light"><div className='flex justify-center'>{user.email}</div></td>
 
                     <td>
+                      <div className='flex justify-center'>
                       <button
                         onClick={() => updateUser(user.email, 'is_leader', !user.is_leader)}
                         className={`px-3 py-1 rounded-full text-sm font-medium cursor-pointer ${
@@ -88,9 +89,11 @@ const Admin = ({ token }) => {
                       >
                         {user.is_leader ? 'Yes' : 'No'}
                       </button>
+                      </div>
                     </td>
 
                     <td>
+                      <div className='flex justify-center'>
                       <button
                         className={`px-3 py-1 rounded-full text-sm font-medium cursor-not-allowed ${
                           user.is_admin
@@ -100,6 +103,7 @@ const Admin = ({ token }) => {
                       >
                         {user.is_admin ? 'Yes' : 'No'}
                       </button>
+                      </div>
                     </td>
 
                   </tr>

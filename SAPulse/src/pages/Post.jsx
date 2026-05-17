@@ -44,7 +44,7 @@ const Post = () => {
   return (
     <div>
       <div className="flex flex-row bg-gray-50">
-        <Sidebar/>
+        <div className="sticky top-0 h-screen"><Sidebar/></div>
         <div className="pl-8 pt-8 w-full">
         <h2 className="text-2xl font-bold text-black">Create a Post</h2>
         <p className="text-xl font-light text-gray-400">
