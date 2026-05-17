@@ -34,8 +34,7 @@ const Admin = ({ token }) => {
   }
 
   const filtered = users.filter(u =>
-    u.full_name?.toLowerCase().includes(search.toLowerCase()) ||
-    u.email?.toLowerCase().includes(search.toLowerCase())
+    u.full_name?.toLowerCase().includes(search.toLowerCase())
   )
 
   return (
@@ -52,11 +51,12 @@ const Admin = ({ token }) => {
 
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row w-120 bg-white border-2 border-gray-100 rounded-md p-2 my-2">
-              <Search className="mr-2" />
+              <Search className="pr-2 mr-2 border-r-2 border-gray-500" />
               <input
-                placeholder="search"
+                placeholder="search names..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                className='w-full'
               />
             </div>
           </div>
