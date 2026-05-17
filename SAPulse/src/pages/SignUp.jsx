@@ -7,6 +7,7 @@ const SignUp = () => {
     fullname: "",
     email: "",
     password: "",
+    area: "",
   });
 
   console.log(formData);
@@ -20,41 +21,41 @@ const SignUp = () => {
     });
   }
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  try {
-    const { data, error: signUpError } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password,
-      options: {
-        data: {
-          full_name: formData.fullname,
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const { data, error: signUpError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullname,
+            area: formData.area,
+          },
         },
-      },
-    });
+      });
 
-    if (signUpError) throw signUpError;
+      if (signUpError) throw signUpError;
 
-    // data.user exists even before verification
-    if (!data.user) throw new Error("Sign up failed, please try again.");
+      // data.user exists even before verification
+      if (!data.user) throw new Error("Sign up failed, please try again.");
 
-    const { error: insertError } = await supabase
-      .from("users")
-      .insert({
+      const { error: insertError } = await supabase.from("users").insert({
         id: data.user.id,
         full_name: formData.fullname,
         email: formData.email,
+        area: formData.area,
         is_admin: false,
         is_leader: false,
       });
 
-    if (insertError) throw insertError;
+      if (insertError) throw insertError;
 
-    alert("Check your E-mail for Verification Link");
-  } catch (error) {
-    alert(error.message);
+      alert("Check your E-mail for Verification Link");
+    } catch (error) {
+      alert(error.message);
+    }
   }
-}
 
   return (
     <>
@@ -91,6 +92,17 @@ async function handleSubmit(e) {
               onChange={handleChange}
               className="border border-gray-200 p-2 rounded-md"
             />
+            <select
+              name="area"
+              value={formData.area}
+              onChange={handleChange}
+              className="text-gray-500 border rounded-md border-gray-200 p-2 px-4"
+            >
+              <option value="">-- Select your Area --</option>
+              <option value="Germiston">Germiston</option>
+              <option value="Edenvale">Edenvale</option>
+              <option value="Kempton Park">Kempton Park</option>
+            </select>
 
             <button
               type="submit"

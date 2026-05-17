@@ -80,7 +80,7 @@ const Admin = ({ token }) => {
                     <td>
                       <button
                         onClick={() => updateUser(user.email, 'is_leader', !user.is_leader)}
-                        className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        className={`px-3 py-1 rounded-full text-sm font-medium cursor-pointer ${
                           user.is_leader
                             ? 'bg-blue-100 text-blue-700'
                             : 'bg-gray-100 text-gray-500'
@@ -92,7 +92,7 @@ const Admin = ({ token }) => {
 
                     <td>
                       <button
-                        className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        className={`px-3 py-1 rounded-full text-sm font-medium cursor-not-allowed ${
                           user.is_admin
                             ? 'bg-blue-100 text-blue-700'
                             : 'bg-gray-100 text-gray-500'
