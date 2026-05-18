@@ -51,7 +51,7 @@ const SignUp = () => {
 
       if (insertError) throw insertError;
 
-      alert("Check your E-mail for Verification Link");
+      alert("Details saved. Head to log in with your new account!");
     } catch (error) {
       alert(error.message);
     }
